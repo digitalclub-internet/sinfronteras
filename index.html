@@ -1,0 +1,494 @@
+<title>Club Sin Fronteras</title>
+<style>
+  :root {
+    --bg: #E9EEE2; --bg-2: #DFE6D5; --paper: #FBFCF8; --paper-2: #F1F5EA;
+    --ink: #0E1A14; --ink-soft: #33463C; --muted: #5E6F63; --line: #D3DCC8;
+    --green: #1E9D57; --green-deep: #12463A; --earth: #C15A28; --gold: #C9922B; --pine: #16413A;
+    --shadow: 0 30px 70px -40px rgba(14,26,20,.5);
+    --serif: "Iowan Old Style","Palatino Linotype","Palatino",Georgia,"Times New Roman",serif;
+    --sans: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono: ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A120D; --bg-2: #060C09; --paper: #13201A; --paper-2: #182A22;
+      --ink: #EAF1E7; --ink-soft: #C3D2C6; --muted: #8AA091; --line: #253A2F;
+      --green: #34C574; --green-deep: #7FE0A6; --earth: #E67E44; --gold: #E7B84C; --pine: #9CD9C4;
+      --shadow: 0 30px 80px -40px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #E9EEE2; --bg-2: #DFE6D5; --paper: #FBFCF8; --paper-2: #F1F5EA;
+    --ink: #0E1A14; --ink-soft: #33463C; --muted: #5E6F63; --line: #D3DCC8;
+    --green: #1E9D57; --green-deep: #12463A; --earth: #C15A28; --gold: #C9922B; --pine: #16413A;
+    --shadow: 0 30px 70px -40px rgba(14,26,20,.5);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A120D; --bg-2: #060C09; --paper: #13201A; --paper-2: #182A22;
+    --ink: #EAF1E7; --ink-soft: #C3D2C6; --muted: #8AA091; --line: #253A2F;
+    --green: #34C574; --green-deep: #7FE0A6; --earth: #E67E44; --gold: #E7B84C; --pine: #9CD9C4;
+    --shadow: 0 30px 80px -40px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: linear-gradient(180deg, var(--bg), var(--bg-2)) fixed; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+
+  .topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px clamp(16px, 4vw, 34px); background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand .emblem { width: 32px; height: 32px; flex: 0 0 auto; }
+  .brand .name { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -.01em; }
+  .brand .name span { color: var(--green); }
+  .topcta { border: 0; border-radius: 999px; padding: 9px 18px; background: var(--green); color: #fff; font-weight: 700; font-size: 13.5px; font-family: var(--sans); cursor: pointer; }
+
+  .shell { display: flex; gap: clamp(20px, 4vw, 44px); max-width: 1180px; margin: 0 auto; padding: clamp(18px, 3vw, 34px) clamp(16px, 4vw, 34px) 120px; }
+  .sidebar { width: 232px; flex: 0 0 auto; position: sticky; top: 84px; align-self: flex-start; display: flex; flex-direction: column; gap: 4px; }
+  .sidebar .navbtn { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 12px; border: 0; background: none; cursor: pointer; color: var(--ink-soft); font-family: var(--sans); font-size: 15px; font-weight: 500; text-align: left; }
+  .sidebar .navbtn svg { width: 21px; height: 21px; flex: 0 0 auto; }
+  .sidebar .navbtn:hover { background: var(--paper-2); }
+  .sidebar .navbtn.active { background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green); font-weight: 600; }
+  .side-cta { margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+  .side-cta .price { font-family: var(--serif); font-size: 26px; font-weight: 600; }
+  .side-cta .price small { font-size: 13px; color: var(--muted); font-family: var(--sans); }
+  .side-cta .free { font-family: var(--mono); font-size: 10px; color: var(--green); letter-spacing: .1em; text-transform: uppercase; margin: 4px 0 10px; }
+
+  .main { flex: 1 1 auto; min-width: 0; max-width: 780px; }
+  .screen { display: none; animation: fade .35s ease; }
+  .screen.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .screen { animation: none; } }
+
+  .h-screen { font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.01em; margin: 0 0 4px; text-wrap: balance; }
+  .sub-screen { color: var(--muted); font-size: 14.5px; margin: 0 0 20px; }
+  .sec-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 26px 2px 12px; display: flex; align-items: center; gap: 10px; }
+  .sec-label::after { content:""; flex: 1; height: 1px; background: var(--line); }
+
+  .impactstrip { background: linear-gradient(120deg, var(--green-deep), var(--pine)); color: #EAF6EE; border-radius: 20px; padding: 20px 22px; margin-bottom: 22px; display: flex; align-items: center; gap: 18px; position: relative; overflow: hidden; }
+  .impactstrip .big { font-family: var(--serif); font-weight: 600; font-size: clamp(30px,6vw,40px); line-height: 1; font-variant-numeric: tabular-nums; color:#fff; }
+  .impactstrip small { display: block; font-size: 12.5px; opacity: .85; margin-top: 5px; }
+  .leafwm { position: absolute; right: 4px; bottom: -18px; width: 120px; height: 120px; opacity: .16; }
+
+  .feedgrid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  @media (prefers-reduced-motion: reduce){ .card:hover { transform: none; } }
+  .thumb { height: 150px; position: relative; overflow: hidden; }
+  .art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .badge { position: absolute; top: 12px; left: 12px; z-index: 3; font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px; color: #fff; display: inline-flex; align-items: center; gap: 6px; backdrop-filter: blur(2px); }
+  .badge.hora { background: var(--earth); } .badge.new { background: var(--green); }
+  .badge .dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: blink 1.4s infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  @media (prefers-reduced-motion: reduce){ .badge .dot { animation: none; } }
+  .card .body { padding: 14px 16px 16px; }
+  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.18; margin: 0 0 6px; }
+  .card .meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .card .meta .src { color: var(--green); }
+  .card p.dek { font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin: 9px 0 0; }
+  .readmore { margin-top: 13px; font-size: 12.5px; font-weight: 600; color: var(--green); display: inline-flex; align-items: center; gap: 5px; cursor: pointer; background: none; border: 0; padding: 0; font-family: var(--sans); }
+  .lock { font-size: 10px; color: var(--gold); font-family: var(--mono); letter-spacing: .1em; }
+
+  .story .kicker { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--earth); margin: 0 2px; }
+  .story h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(24px,4.5vw,34px); line-height: 1.08; margin: 8px 2px 10px; text-wrap: balance; }
+  .story .hero-art { height: 210px; border-radius: 18px; overflow: hidden; position: relative; margin: 6px 0 16px; border: 1px solid var(--line); }
+  .story .lede { font-size: 16px; color: var(--ink-soft); line-height: 1.6; margin: 12px 2px 18px; max-width: 62ch; }
+  .story .lede b { color: var(--ink); }
+  .exclusive { border: 1px dashed color-mix(in srgb, var(--gold) 60%, var(--line)); background: color-mix(in srgb, var(--gold) 10%, var(--paper)); border-radius: 14px; padding: 14px 16px; margin: 0 0 18px; }
+  .exclusive .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .exclusive p { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 6px 0 0; max-width: 62ch; }
+
+  .timeline { display: grid; gap: 0; margin: 6px 2px 18px; max-width: 640px; }
+  .tl { display: grid; grid-template-columns: 74px 1fr; gap: 14px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .tl:last-child { border-bottom: 0; }
+  .tl .yr { font-family: var(--mono); font-weight: 700; font-size: 14px; color: var(--green); font-variant-numeric: tabular-nums; }
+  .tl .num { font-family: var(--serif); font-size: 22px; font-weight: 600; }
+  .tl .lbl { font-size: 12.5px; color: var(--muted); }
+  .tl .grow { height: 6px; border-radius: 4px; background: color-mix(in srgb, var(--green) 32%, transparent); margin-top: 8px; }
+
+  .map { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); margin: 0 2px 18px; max-width: 640px; }
+  .fuentes { margin: 0 2px 14px; padding: 0; }
+  .fuentes li { font-family: var(--mono); font-size: 11.5px; color: var(--muted); line-height: 1.8; list-style: none; padding-left: 18px; position: relative; }
+  .fuentes li::before { content:"↳"; position: absolute; left: 0; color: var(--green); }
+  .howto { background: var(--paper-2); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 6px 2px 22px; max-width: 640px; }
+  .howto h4 { margin: 0 0 8px; font-size: 14px; }
+  .howto a { color: var(--green); text-decoration: none; font-weight: 600; font-size: 14px; cursor: pointer; }
+
+  .mini { display: grid; grid-template-columns: 66px 1fr; gap: 14px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 10px; margin-bottom: 10px; cursor: pointer; transition: transform .15s; }
+  .mini:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce){ .mini:hover{ transform:none; } }
+  .mini .mart { width: 66px; height: 58px; border-radius: 10px; overflow: hidden; position: relative; flex: 0 0 auto; }
+  .mini b { font-family: var(--serif); font-size: 15.5px; font-weight: 600; display: block; margin-bottom: 2px; }
+  .mini span { font-size: 12px; color: var(--muted); }
+  .mini .mlock { font-family: var(--mono); font-size: 9.5px; color: var(--gold); letter-spacing: .08em; }
+
+  .specgrid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+  .spec { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; transition: transform .15s; }
+  .spec:hover { transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce){ .spec:hover{ transform:none; } }
+  .spec .pic { height: 108px; position: relative; overflow: hidden; }
+  .spec .info { padding: 11px 13px 13px; }
+  .spec .info b { font-family: var(--serif); font-weight: 600; font-size: 16px; display: block; }
+  .spec .sci { font-size: 11px; font-style: italic; color: var(--muted); font-family: var(--serif); }
+  .status { margin-top: 8px; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; display: inline-block; }
+  .st-rec { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); }
+  .st-rei { background: color-mix(in srgb, var(--gold) 20%, transparent); color: var(--gold); }
+  .st-est { background: color-mix(in srgb, var(--pine) 18%, transparent); color: var(--pine); }
+
+  .bigstat { text-align: center; padding: 14px 0 4px; }
+  .bigstat .n { font-family: var(--serif); font-weight: 600; font-size: clamp(52px,11vw,72px); line-height: 1; color: var(--green); font-variant-numeric: tabular-nums; }
+  .bigstat .u { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .statrow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .stat { background: var(--paper-2); border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-align: center; }
+  .stat .n { font-family: var(--serif); font-size: 30px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat .l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .cert { margin-top: 6px; border-radius: 18px; padding: 22px; color: #fff; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--pine), var(--green-deep)); max-width: 560px; }
+  .cert .k { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+  .cert h3 { font-family: var(--serif); font-size: 25px; margin: 8px 0 5px; }
+  .cert p { font-size: 13.5px; opacity: .9; margin: 0; line-height: 1.5; max-width: 46ch; }
+  .cert .seal { position: absolute; right: 18px; top: 18px; width: 54px; height: 54px; opacity: .9; }
+  .note-box { margin-top: 16px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 14px; padding: 16px; max-width: 560px; font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .note-box b { color: var(--gold); }
+
+  .benefit { display: flex; gap: 14px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 11px; max-width: 640px; }
+  .benefit .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--paper-2); flex: 0 0 auto; font-size: 20px; }
+  .benefit .t b { font-size: 15px; display: block; } .benefit .t span { font-size: 12.5px; color: var(--muted); }
+  .benefit .off { margin-left: auto; font-family: var(--mono); font-weight: 700; font-size: 14px; color: var(--green); white-space: nowrap; }
+
+  .invite { background: linear-gradient(135deg, var(--earth), var(--gold)); color: #fff; border-radius: 18px; padding: 20px; margin: 20px 0; max-width: 640px; }
+  .invite .k { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; opacity: .9; }
+  .invite h3 { font-family: var(--serif); font-size: 22px; margin: 6px 0; }
+  .invite p { font-size: 13.5px; opacity: .95; margin: 0 0 14px; line-height: 1.5; max-width: 52ch; }
+  .invite .code { background: rgba(255,255,255,.2); border: 1px dashed rgba(255,255,255,.6); border-radius: 8px; padding: 10px 14px; font-family: var(--mono); font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; }
+
+  .notify { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 18px; max-width: 640px; }
+  .notify h3 { font-size: 15px; margin: 0 0 4px; }
+  .notify .subt { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+  .chan { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .chan .ic { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; flex: 0 0 auto; font-size: 16px; }
+  .chan .lbl b { font-size: 14px; display: block; } .chan .lbl span { font-size: 12px; color: var(--muted); }
+  .toggle { margin-left: auto; width: 46px; height: 26px; border-radius: 999px; background: var(--green); position: relative; cursor: pointer; border: 0; flex: 0 0 auto; }
+  .toggle::after { content:""; position: absolute; top: 3px; left: 23px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .2s; }
+  .toggle.off { background: var(--line); } .toggle.off::after { left: 3px; }
+  @media (prefers-reduced-motion: reduce){ .toggle::after { transition: none; } }
+  .btn { display: block; width: 100%; border: 0; border-radius: 12px; padding: 13px; background: var(--green); color: #fff; font-size: 15px; font-weight: 700; font-family: var(--sans); cursor: pointer; }
+
+  .tabbar { display: none; }
+  .footnote { text-align: center; font-size: 12px; color: var(--muted); line-height: 1.7; padding: 30px 16px 0; max-width: 660px; margin: 0 auto; }
+  .footnote code { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+
+  @media (min-width: 861px) {
+    .feedgrid { grid-template-columns: 1fr 1fr; }
+    .feedgrid .impactstrip { grid-column: 1 / -1; margin-bottom: 6px; }
+    .specgrid { grid-template-columns: repeat(3,1fr); }
+  }
+  @media (max-width: 860px) {
+    .sidebar { display: none; }
+    .shell { padding: 16px 16px 96px; }
+    .main { max-width: 100%; }
+    .tabbar { display: grid; grid-template-columns: repeat(5,1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); padding: 8px 6px calc(8px + env(safe-area-inset-bottom)); }
+    .tabbar .navbtn { border: 0; background: none; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 0; cursor: pointer; color: var(--muted); font-family: var(--sans); }
+    .tabbar .navbtn svg { width: 22px; height: 22px; }
+    .tabbar .navbtn span { font-size: 9.5px; font-weight: 600; }
+    .tabbar .navbtn.active { color: var(--green); }
+  }
+</style>
+
+<!-- ===== ilustraciones reutilizables (siluetas) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="an-bison" viewBox="0 0 100 70">
+    <path fill="currentColor" d="M15 46 Q9 26 24 24 Q27 12 37 21 Q40 15 45 22 Q70 18 84 32 Q92 40 86 50 L80 50 Q79 40 70 42 L60 43 L30 44 Q19 45 21 52 Z"/>
+    <path fill="currentColor" d="M21 24 q-6 -3 -9 1 q4 2 9 1 Z"/>
+    <rect x="30" y="48" width="5" height="17" rx="2" fill="currentColor"/>
+    <rect x="43" y="49" width="5" height="16" rx="2" fill="currentColor"/>
+    <rect x="65" y="49" width="5" height="15" rx="2" fill="currentColor"/>
+    <rect x="76" y="48" width="5" height="14" rx="2" fill="currentColor"/>
+    <path fill="currentColor" d="M84 44 q6 3 5 10 q-4 -2 -5 -6 Z"/>
+  </symbol>
+  <symbol id="an-bird" viewBox="0 0 100 46">
+    <path fill="currentColor" d="M4 30 Q28 8 47 26 Q50 30 53 26 Q72 8 96 30 Q72 22 53 32 Q50 34 47 32 Q28 22 4 30 Z"/>
+  </symbol>
+  <symbol id="an-wolf" viewBox="0 0 100 84">
+    <path fill="currentColor" d="M34 82 L34 50 Q34 43 41 43 L45 43 Q47 28 55 20 Q58 13 55 6 Q63 11 65 21 Q71 25 71 35 L71 50 Q78 52 78 61 L80 82 Z"/>
+    <path fill="currentColor" d="M55 8 q-5 -4 -10 -3 q4 5 10 5 Z"/>
+  </symbol>
+  <symbol id="an-pronghorn" viewBox="0 0 100 90">
+    <ellipse cx="44" cy="54" rx="25" ry="11" fill="currentColor"/>
+    <rect x="30" y="60" width="5" height="22" rx="2" fill="currentColor"/>
+    <rect x="41" y="61" width="5" height="21" rx="2" fill="currentColor"/>
+    <rect x="55" y="60" width="5" height="22" rx="2" fill="currentColor"/>
+    <path fill="currentColor" d="M64 50 Q72 34 74 18 Q80 22 78 40 Q76 50 70 54 Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" d="M74 22 Q70 12 71 4 M74 22 Q80 14 84 12"/>
+    <path fill="currentColor" d="M19 52 Q10 54 10 64 q6 -2 12 -6 Z"/>
+  </symbol>
+  <symbol id="an-prairie" viewBox="0 0 60 90">
+    <path fill="currentColor" d="M30 86 Q13 86 15 58 Q15 40 25 34 Q22 23 30 18 Q38 23 35 34 Q45 40 45 58 Q47 86 30 86 Z"/>
+    <ellipse cx="30" cy="30" rx="10" ry="11" fill="currentColor"/>
+    <path fill="currentColor" d="M26 46 q-6 2 -7 10 q5 -1 9 -5 Z M34 46 q6 2 7 10 q-5 -1 -9 -5 Z"/>
+  </symbol>
+</svg>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="emblem" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" stroke="var(--green)" stroke-width="2.5" stroke-dasharray="5 6"/>
+      <path d="M24 34c0-7 3-12 9-14-1 8-4 12-9 14Z" fill="var(--green)"/>
+      <path d="M24 34c0-6-3-10-8-11 1 7 4 10 8 11Z" fill="var(--pine)"/>
+      <path d="M24 36V22" stroke="var(--pine)" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <span class="name">Club Sin <span>Fronteras</span></span>
+  </div>
+  <button class="topcta">Únete · 7 días gratis</button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <button class="navbtn active" data-target="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Última hora</button>
+    <button class="navbtn" data-target="historia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/></svg>El acervo</button>
+    <button class="navbtn" data-target="especies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-5-4-8-7-8-11a4 4 0 018-1 4 4 0 018 1c0 4-3 7-8 11z"/></svg>Especies</button>
+    <button class="navbtn" data-target="impacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M12 8c4-4 8 0 8 0s-2 6-8 6"/><path d="M12 6C8 2 4 6 4 6s2 5 8 5"/></svg>Impacto</button>
+    <button class="navbtn" data-target="beneficios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/></svg>Ventajas</button>
+    <div class="side-cta">
+      <div class="price">MX$89<small> /mes</small></div>
+      <div class="free">7 días gratis</div>
+      <button class="btn">Unirme al club</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- INICIO -->
+    <section class="screen active" data-screen="inicio">
+      <h1 class="h-screen">La naturaleza vuelve</h1>
+      <p class="sub-screen">Las buenas noticias de la restauración, en tiempo real y a fondo.</p>
+
+      <div class="feedgrid">
+        <div class="impactstrip">
+          <svg class="leafwm" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 44c0-14 6-24 18-28-2 16-8 24-18 28Z" fill="#fff"/></svg>
+          <div>
+            <div class="big" data-count="1240">0</div>
+            <small>hectáreas ya en recuperación con el club · tu cuota ayuda</small>
+          </div>
+        </div>
+
+        <article class="card">
+          <div class="thumb" style="background:linear-gradient(180deg,#c9d9a8,#9bb56a)">
+            <svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMax slice"><circle cx="330" cy="44" r="30" fill="#f4e6b8" opacity=".7"/><path d="M0 132 Q120 104 240 126 T400 120 L400 180 L0 180Z" fill="#7c9a54" opacity=".7"/><path d="M0 150 Q140 128 260 146 T400 146 L400 180 L0 180Z" fill="#4f6b34" opacity=".85"/><use href="#an-bison" x="118" y="86" width="170" height="88" style="color:#22160f"/></svg>
+            <span class="badge new"><span class="dot"></span>Expediente</span>
+          </div>
+          <div class="body">
+            <div class="meta"><span>dic 2025</span>·<span class="src">Janos, Chihuahua</span></div>
+            <h3>De 23 a casi 500 bisontes en 16 años</h3>
+            <p class="dek">Donados en 2009 por el Wind Cave NP de EE. UU. al Rancho El Uno, hoy forman cuatro manadas. Una de las mayores restauraciones de Norteamérica.</p>
+            <button class="readmore" data-go="historia">Leer el expediente completo →</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="background:linear-gradient(180deg,#d9c9a0,#b79a63)">
+            <svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMax slice"><circle cx="70" cy="50" r="26" fill="#f6ecc8" opacity=".7"/><path d="M0 138 Q120 118 250 134 T400 130 L400 180 L0 180Z" fill="#9a7b46" opacity=".7"/><path d="M0 156 L400 150 L400 180 L0 180Z" fill="#6b5230" opacity=".85"/><use href="#an-bison" x="60" y="94" width="150" height="78" style="color:#2a1c12"/><use href="#an-bison" x="210" y="104" width="110" height="58" style="color:#3a281a"/></svg>
+            <span class="badge hora"><span class="dot"></span>Última hora</span>
+          </div>
+          <div class="body">
+            <div class="meta"><span>mar 2026</span>·<span class="src">Cuatro Ciénegas, Coahuila</span></div>
+            <h3>El bisonte vuelve a Coahuila tras 200 años</h3>
+            <p class="dek">44 ejemplares forman una nueva manada en una reserva privada de más de 3,700 hectáreas — la expansión del modelo de Janos.</p>
+            <button class="readmore">Leer más <span class="lock">· acervo</span> →</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="background:linear-gradient(180deg,#a9d6d0,#5fa39a)">
+            <svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMax slice"><path d="M0 60 H400 M0 90 H400 M0 120 H400" stroke="#ffffff" stroke-width="6" opacity=".12"/><g transform="translate(96,52)"><path d="M12 40 Q70 8 168 30 Q214 42 168 55 Q70 78 12 46 Z" fill="#EBA6B6"/><path d="M168 22 Q206 42 168 62 Q192 42 168 22 Z" fill="#E79BAE"/><ellipse cx="40" cy="44" rx="30" ry="27" fill="#F1AEBE"/><g stroke="#E187A0" stroke-width="6" stroke-linecap="round" fill="none"><path d="M40 18 Q33 2 20 -1"/><path d="M48 17 Q49 -1 41 -6"/><path d="M56 20 Q64 5 74 3"/></g><circle cx="30" cy="42" r="4" fill="#3a2530"/><path d="M18 54 Q34 66 52 55" stroke="#C87C90" stroke-width="4" fill="none" stroke-linecap="round"/></g></svg>
+            <span class="badge new"><span class="dot"></span>Nuevo</span>
+          </div>
+          <div class="body">
+            <div class="meta"><span>jun 2025</span>·<span class="src">Xochimilco, CDMX</span></div>
+            <h3>Los ajolotes criados en cautiverio sí sobreviven</h3>
+            <p class="dek">La UNAM confirma: ejemplares liberados en los canales fueron recapturados con aumento de peso. Un giro para una especie al borde.</p>
+            <button class="readmore">Leer más <span class="lock">· acervo</span> →</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb" style="background:linear-gradient(180deg,#a9c8d9,#5f86a3)">
+            <svg class="art" viewBox="0 0 400 180" preserveAspectRatio="xMidYMax slice"><path d="M40 40 H360 M20 70 H380" stroke="#fff" stroke-width="4" opacity=".14"/><rect x="150" y="66" width="100" height="70" rx="6" fill="#ffffff" opacity=".18"/><g transform="translate(150,74)"><path d="M8 34 Q56 6 112 30 Q158 44 112 52 Q56 74 8 40 Z" fill="#E7A6B4"/><ellipse cx="34" cy="38" rx="24" ry="22" fill="#EEAFBD"/><g stroke="#E187A0" stroke-width="5" stroke-linecap="round" fill="none"><path d="M34 16 Q28 3 18 1"/><path d="M42 16 Q42 2 36 -3"/></g><circle cx="26" cy="37" r="3.4" fill="#3a2530"/></g></svg>
+            <span class="badge new"><span class="dot"></span>Nuevo</span>
+          </div>
+          <div class="body">
+            <div class="meta"><span>sep 2024</span>·<span class="src">Xochimilco, CDMX</span></div>
+            <h3>Abre Anemitilkalli, laboratorio para salvar al ajolote</h3>
+            <p class="dek">Un centro comunitario que reproduce y reintroduce al anfibio más emblemático de México, junto con los chinamperos.</p>
+            <button class="readmore">Leer más <span class="lock">· acervo</span> →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HISTORIA / ACERVO -->
+    <section class="screen story" data-screen="historia">
+      <p class="kicker">El expediente · lo que no cupo en el video</p>
+      <h2>Cómo 23 bisontes se volvieron casi 500 en 16 años</h2>
+
+      <div class="hero-art">
+        <svg class="art" viewBox="0 0 400 210" preserveAspectRatio="xMidYMax slice" style="background:linear-gradient(180deg,#e7d9a6,#b79a5f)"><circle cx="320" cy="50" r="36" fill="#f7ead0" opacity=".75"/><path d="M0 150 Q120 122 240 144 T400 138 L400 210 L0 210Z" fill="#9a7b46" opacity=".65"/><path d="M0 172 Q140 150 260 168 T400 168 L400 210 L0 210Z" fill="#6b5230" opacity=".85"/><use href="#an-bison" x="70" y="112" width="170" height="88" style="color:#2a1c12"/><use href="#an-bison" x="238" y="128" width="120" height="62" style="color:#3a281a"/></svg>
+      </div>
+
+      <p class="lede">El video contó el regreso en 12 minutos. Aquí está el expediente completo: los números reales, el antes y después, por qué importa y cómo verlos tú mismo.</p>
+
+      <div class="exclusive">
+        <span class="tag">◆ Exclusivo del club</span>
+        <p>Reconstruimos la reintroducción año por año con los datos de manejo de la reserva y los reportes de la CONANP — el material que quedó fuera del video final.</p>
+      </div>
+
+      <div class="sec-label">La recuperación, año por año</div>
+      <div class="timeline">
+        <div class="tl"><span class="yr">&lt;1900</span><div><div class="num">0</div><div class="lbl">el bisonte desaparece del norte de México</div><div class="grow" style="width:3%"></div></div></div>
+        <div class="tl"><span class="yr">2009</span><div><div class="num">23</div><div class="lbl">donados por el Wind Cave NP (EE. UU.) al Rancho El Uno, Reserva de la Biósfera Janos</div><div class="grow" style="width:12%"></div></div></div>
+        <div class="tl"><span class="yr">2024</span><div><div class="num">~470</div><div class="lbl">la manada de Janos se reproduce sola, sin aporte externo</div><div class="grow" style="width:82%"></div></div></div>
+        <div class="tl"><span class="yr">2025</span><div><div class="num">~500</div><div class="lbl">en cuatro manadas; nace una nueva colonia en Cuatro Ciénegas</div><div class="grow" style="width:100%"></div></div></div>
+      </div>
+
+      <div class="sec-label">Por qué importa</div>
+      <p class="lede" style="margin-top:0">El bisonte es un <b>ingeniero del ecosistema</b>: su forma de pastar controla los arbustos, favorece el rebrote de pastos nativos, mejora la infiltración de agua en el suelo y dispersa semillas. No vuelve solo un animal — vuelve toda una pradera.</p>
+
+      <div class="sec-label">Dónde ocurrió</div>
+      <div class="map">
+        <svg viewBox="0 0 640 190" width="100%" aria-label="Mapa de la región de Janos">
+          <rect width="640" height="190" fill="var(--paper-2)"/>
+          <path d="M0 55 L230 40 L370 70 L640 55 L640 190 L0 190Z" fill="color-mix(in srgb, var(--green) 22%, transparent)"/>
+          <path d="M0 55 L230 40 L370 70 L640 55" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <line x1="0" y1="24" x2="640" y2="18" stroke="var(--earth)" stroke-width="1" stroke-dasharray="6 5"/>
+          <text x="10" y="16" font-family="ui-monospace" font-size="9" fill="var(--earth)">FRONTERA MÉXICO – EE. UU.</text>
+          <circle cx="290" cy="110" r="7" fill="var(--green)"/>
+          <circle cx="290" cy="110" r="14" fill="none" stroke="var(--green)" stroke-width="1.5" opacity=".5"/>
+          <text x="310" y="114" font-family="ui-monospace" font-size="11" fill="var(--ink)">Reserva de Janos</text>
+        </svg>
+      </div>
+
+      <div class="sec-label">Fuentes</div>
+      <ul class="fuentes">
+        <li>La Jornada (dic 2025) — «Población de bisontes americanos pasa de 23 a casi 500 en 16 años»</li>
+        <li>CONANP / gob.mx — nacimientos de bisonte americano en Janos</li>
+        <li>Expansión (2026) — el regreso del bisonte, de Janos a Cuatro Ciénegas</li>
+      </ul>
+
+      <div class="howto">
+        <h4>🧭 ¿Cómo verlos o ayudar?</h4>
+        <a>Rutas de observación responsable en Janos →</a><br>
+        <a style="margin-top:6px;display:inline-block">Proyectos que reciben parte de tu cuota →</a>
+      </div>
+
+      <div class="sec-label">Más en el acervo</div>
+      <div class="mini">
+        <div class="mart"><svg class="art" viewBox="0 0 120 100" preserveAspectRatio="xMidYMax slice" style="background:linear-gradient(180deg,#a9d6d0,#5fa39a)"><g transform="translate(20,34)"><path d="M6 22 Q40 4 92 18 Q118 26 92 32 Q40 46 6 26 Z" fill="#EBA6B6"/><ellipse cx="22" cy="24" rx="17" ry="15" fill="#F1AEBE"/><g stroke="#E187A0" stroke-width="4" stroke-linecap="round" fill="none"><path d="M22 10 Q17 1 8 -1"/><path d="M30 11 Q37 2 45 1"/></g><circle cx="17" cy="24" r="2.6" fill="#3a2530"/></g></svg></div>
+        <div><b>El ajolote no se rinde</b><span>36 en libertad en 2013 → criados en cautiverio que ya sobreviven en los canales.</span><br><span class="mlock">◆ Expediente · próximamente</span></div>
+      </div>
+      <div class="mini">
+        <div class="mart"><svg class="art" viewBox="0 0 120 100" preserveAspectRatio="xMidYMax slice" style="background:linear-gradient(180deg,#3a4a63,#1e2a3f)"><circle cx="90" cy="26" r="16" fill="#e8ecf5" opacity=".8"/><path d="M0 74 Q60 60 120 72 L120 100 L0 100Z" fill="#12100a" opacity=".7"/><use href="#an-wolf" x="30" y="24" width="60" height="72" style="color:#0c0a08"/></svg></div>
+        <div><b>El regreso del lobo mexicano</b><span>La subespecie de lobo más amenazada de Norteamérica gana terreno otra vez.</span><br><span class="mlock">◆ Expediente · próximamente</span></div>
+      </div>
+      <div class="mini">
+        <div class="mart"><svg class="art" viewBox="0 0 120 100" preserveAspectRatio="xMidYMax slice" style="background:linear-gradient(180deg,#8fc0d8,#4f88a8)"><path d="M0 78 Q60 66 120 78 L120 100 L0 100Z" fill="#2f5a70" opacity=".7"/><use href="#an-bird" x="18" y="24" width="84" height="40" style="color:#12303f"/></svg></div>
+        <div><b>Sin cabras, vuelven los albatros</b><span>Erradicar herbívoros invasores devolvió la vegetación — y las aves marinas — a Isla Guadalupe.</span><br><span class="mlock">◆ Expediente · próximamente</span></div>
+      </div>
+    </section>
+
+    <!-- ESPECIES -->
+    <section class="screen" data-screen="especies">
+      <h1 class="h-screen">Atlas vivo</h1>
+      <p class="sub-screen">Cada especie que vuelve, documentada. Se suma una ficha nueva cada semana.</p>
+      <div class="specgrid">
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#d9c9a0,#a5854f)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><path d="M0 84 Q100 70 200 82 L200 108 L0 108Z" fill="#6b5230" opacity=".8"/><use href="#an-bison" x="40" y="34" width="120" height="66" style="color:#2a1c12"/></svg></div><div class="info"><b>Bisonte</b><span class="sci">Bison bison</span><br><span class="status st-rei">Reintroducido</span></div></div>
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#a9d6d0,#5fa39a)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><g transform="translate(46,36)"><path d="M6 24 Q46 4 100 20 Q126 28 100 34 Q46 48 6 28 Z" fill="#EBA6B6"/><ellipse cx="24" cy="26" rx="18" ry="16" fill="#F1AEBE"/><g stroke="#E187A0" stroke-width="4.5" stroke-linecap="round" fill="none"><path d="M24 11 Q18 0 8 -2"/><path d="M32 12 Q40 2 49 1"/></g><circle cx="18" cy="25" r="2.8" fill="#3a2530"/></g></svg></div><div class="info"><b>Ajolote</b><span class="sci">Ambystoma mexicanum</span><br><span class="status st-rec">En recuperación</span></div></div>
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#3a4a63,#1e2a3f)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><circle cx="150" cy="30" r="18" fill="#e8ecf5" opacity=".8"/><path d="M0 82 Q100 68 200 80 L200 108 L0 108Z" fill="#0c0a08" opacity=".75"/><use href="#an-wolf" x="66" y="24" width="70" height="82" style="color:#08070a"/></svg></div><div class="info"><b>Lobo mexicano</b><span class="sci">Canis lupus baileyi</span><br><span class="status st-rei">Reintroducido</span></div></div>
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#e0d29a,#b39a5c)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><path d="M0 86 Q100 74 200 84 L200 108 L0 108Z" fill="#7c6636" opacity=".8"/><use href="#an-pronghorn" x="60" y="16" width="86" height="88" style="color:#3f3016"/></svg></div><div class="info"><b>Berrendo</b><span class="sci">Antilocapra americana</span><br><span class="status st-rec">En recuperación</span></div></div>
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#8fc0d8,#4f88a8)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><path d="M0 84 Q100 72 200 82 L200 108 L0 108Z" fill="#2f5a70" opacity=".75"/><use href="#an-bird" x="44" y="30" width="112" height="52" style="color:#123040"/></svg></div><div class="info"><b>Albatros de Laysan</b><span class="sci">Phoebastria immutabilis</span><br><span class="status st-est">Estable</span></div></div>
+        <div class="spec"><div class="pic" style="background:linear-gradient(180deg,#d8c68f,#ad9350)"><svg class="art" viewBox="0 0 200 108" preserveAspectRatio="xMidYMax slice"><path d="M0 88 Q100 78 200 86 L200 108 L0 108Z" fill="#75612f" opacity=".8"/><use href="#an-prairie" x="82" y="26" width="46" height="78" style="color:#3f3316"/></svg></div><div class="info"><b>Perrito de la pradera</b><span class="sci">Cynomys mexicanus</span><br><span class="status st-rec">En recuperación</span></div></div>
+      </div>
+    </section>
+
+    <!-- IMPACTO -->
+    <section class="screen" data-screen="impacto">
+      <h1 class="h-screen">Tu impacto</h1>
+      <p class="sub-screen">Lo que el club logra, juntos. No lo ganas tú: lo gana la naturaleza en tu nombre.</p>
+      <div class="bigstat"><div class="n" data-count="1240">0</div><div class="u">hectáreas apoyadas por el club</div></div>
+      <div class="statrow">
+        <div class="stat"><div class="n" data-count="8600">0</div><div class="l">árboles nativos</div></div>
+        <div class="stat"><div class="n" data-count="14">0</div><div class="l">proyectos apoyados</div></div>
+      </div>
+      <div class="cert">
+        <svg class="seal" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 4"/><path d="M24 34c0-8 4-13 10-15-1 9-5 13-10 15Z" fill="#fff"/></svg>
+        <span class="k">Certificado de padrino</span>
+        <h3>Eres padrino del bisonte</h3>
+        <p>El 15% de tu cuota se destina a proyectos de restauración verificados. Tu nombre entra en la contabilidad del club.</p>
+      </div>
+      <div class="note-box"><b>¿Por qué esto no se puede piratear?</b> El acceso se comparte; el certificado y el impacto en tu nombre, no. Por eso el club retiene: se pertenece, no solo se consume.</div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="screen" data-screen="beneficios">
+      <h1 class="h-screen">Ventajas de socio</h1>
+      <p class="sub-screen">Además del contenido: descuentos, comunidad y novedades al instante.</p>
+      <div class="benefit"><div class="ic">🦉</div><div class="t"><b>Ecoturismo &amp; reservas</b><span>Estancias y tours de observación</span></div><span class="off">-15%</span></div>
+      <div class="benefit"><div class="ic">🔭</div><div class="t"><b>Óptica &amp; binoculares</b><span>Marcas de birdwatching</span></div><span class="off">-10%</span></div>
+      <div class="benefit"><div class="ic">📖</div><div class="t"><b>Guías &amp; libros de campo</b><span>Editoriales de naturaleza</span></div><span class="off">-20%</span></div>
+      <div class="invite">
+        <span class="k">Invita y gana</span>
+        <h3>Un mes gratis por cada amigo</h3>
+        <p>O elige 30% de comisión recurrente. Comparte el club — la esperanza se contagia.</p>
+        <div class="code"><span>sinfronteras.club/SF-MARÍA</span><span>Copiar</span></div>
+      </div>
+      <div class="notify">
+        <h3>Novedades en tiempo real</h3>
+        <p class="subt">Recibe cada historia al instante, por donde prefieras.</p>
+        <div class="chan"><div class="ic" style="background:#25D36622;color:#1FA855">✆</div><div class="lbl"><b>WhatsApp</b><span>+52 ·· ·· ·· 41</span></div><button class="toggle" aria-label="WhatsApp"></button></div>
+        <div class="chan"><div class="ic" style="background:color-mix(in srgb,var(--earth) 18%,transparent);color:var(--earth)">✉</div><div class="lbl"><b>Email</b><span>maría@correo.com</span></div><button class="toggle" aria-label="Email"></button></div>
+        <div class="chan"><div class="ic" style="background:color-mix(in srgb,var(--green) 18%,transparent);color:var(--green)">🔔</div><div class="lbl"><b>Push de la app</b><span>Solo última hora</span></div><button class="toggle off" aria-label="Push"></button></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="tabbar">
+  <button class="navbtn active" data-target="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></button>
+  <button class="navbtn" data-target="historia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19a2 2 0 012-2h13"/></svg><span>Acervo</span></button>
+  <button class="navbtn" data-target="especies"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-5-4-8-7-8-11a4 4 0 018-1 4 4 0 018 1c0 4-3 7-8 11z"/></svg><span>Especies</span></button>
+  <button class="navbtn" data-target="impacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M12 8c4-4 8 0 8 0s-2 6-8 6"/><path d="M12 6C8 2 4 6 4 6s2 5 8 5"/></svg><span>Impacto</span></button>
+  <button class="navbtn" data-target="beneficios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/></svg><span>Ventajas</span></button>
+</nav>
+
+<p class="footnote">
+  Noticias basadas en fuentes reales (La Jornada, CONANP, UNAM, Expansión). Ilustraciones propias del club. Los datos de impacto del club son ilustrativos en esta versión.<br>
+  <code>Club Sin Fronteras — MVP v1.0 · ago 2026</code>
+</p>
+
+<script>
+  (function () {
+    var navs = document.querySelectorAll('.navbtn');
+    var screens = document.querySelectorAll('.screen');
+    var counted = {};
+    function show(name) {
+      navs.forEach(function (t) { t.classList.toggle('active', t.dataset.target === name); });
+      screens.forEach(function (s) { s.classList.toggle('active', s.dataset.screen === name); });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      animateCounts(name);
+    }
+    navs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.target); }); });
+    document.querySelectorAll('[data-go]').forEach(function (el) { el.addEventListener('click', function () { show(el.dataset.go); }); });
+    document.querySelectorAll('.mini').forEach(function (m) { m.addEventListener('click', function () { window.scrollTo({top:0}); }); });
+    document.querySelectorAll('.toggle').forEach(function (b) { b.addEventListener('click', function () { b.classList.toggle('off'); }); });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCounts(name) {
+      var scope = document.querySelector('.screen[data-screen="' + name + '"]');
+      if (!scope) return;
+      scope.querySelectorAll('[data-count]').forEach(function (el) {
+        var id = name + el.dataset.count + el.className;
+        if (counted[id]) return; counted[id] = true;
+        var target = parseInt(el.dataset.count, 10);
+        if (reduce) { el.textContent = target.toLocaleString('es-MX'); return; }
+        var start = null, dur = 1100;
+        function step(ts) { if (!start) start = ts; var p = Math.min((ts - start) / dur, 1); el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString('es-MX'); if (p < 1) requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+      });
+    }
+    animateCounts('inicio');
+  })();
+</script>
