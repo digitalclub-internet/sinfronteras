@@ -1,5 +1,23 @@
 [
   {
+    "fecha": "temporada 2024-25",
+    "lugar": "Michoacán y Edomex",
+    "titulo": "El bosque de la monarca vuelve a respirar",
+    "texto": "La superficie ocupada por la mariposa monarca en los santuarios repuntó esta temporada, tras años de esfuerzos contra la tala.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/330px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "invierno 2025",
+    "lugar": "Laguna Ojo de Liebre, BCS",
+    "titulo": "Temporada récord de ballena gris en Baja California",
+    "texto": "Las lagunas del Pacífico mexicano volvieron a llenarse de ballenas grises y sus crías, una de las grandes recuperaciones del siglo.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Ballena_gris_adulta_con_su_ballenato.jpg/330px-Ballena_gris_adulta_con_su_ballenato.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
     "fecha": "dic 2025",
     "lugar": "Janos, Chihuahua",
     "titulo": "De 23 a casi 500 bisontes en 16 años",
