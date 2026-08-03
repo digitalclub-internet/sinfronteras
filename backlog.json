@@ -1,0 +1,72 @@
+[
+  {
+    "fecha": "temporada 2024-25",
+    "lugar": "Michoacán y Edomex",
+    "titulo": "El bosque de la monarca vuelve a respirar",
+    "texto": "La superficie ocupada por la mariposa monarca en los santuarios repuntó esta temporada, tras años de esfuerzos contra la tala.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/330px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg"
+  },
+  {
+    "fecha": "invierno 2025",
+    "lugar": "Laguna Ojo de Liebre, BCS",
+    "titulo": "Temporada récord de ballena gris en Baja California",
+    "texto": "Las lagunas del Pacífico mexicano volvieron a llenarse de ballenas grises y sus crías, una de las grandes recuperaciones del siglo.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Ballena_gris_adulta_con_su_ballenato.jpg/330px-Ballena_gris_adulta_con_su_ballenato.jpg"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "La Escobilla, Oaxaca",
+    "titulo": "Arribada masiva de tortuga golfina",
+    "texto": "Cientos de miles de tortugas golfinas desovaron en las playas protegidas de Oaxaca, uno de los santuarios más importantes del mundo.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lepidochelys-olivacea-K%C3%A9lonia-1.JPG/330px-Lepidochelys-olivacea-K%C3%A9lonia-1.JPG"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Desierto de Sonora",
+    "titulo": "El borrego cimarrón recupera terreno",
+    "texto": "Los programas de manejo comunitario devolvieron al borrego cimarrón a sierras donde había desaparecido.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Desert_Bighorn_Barna_Cropped.jpg/330px-Desert_Bighorn_Barna_Cropped.jpg"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Coahuila y Nuevo León",
+    "titulo": "El oso negro regresa a las sierras del noreste",
+    "texto": "Tras décadas de retroceso, los avistamientos de oso negro se multiplican en el noreste de México.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/01_Schwarzb%C3%A4r.jpg/330px-01_Schwarzb%C3%A4r.jpg"
+  },
+  {
+    "fecha": "2024-2025",
+    "lugar": "Península de Yucatán",
+    "titulo": "El censo nacional del jaguar da buenas noticias",
+    "texto": "Los monitoreos confirman más jaguares de lo estimado en las selvas del sureste, señal de ecosistemas que se recuperan.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Standing_jaguar.jpg/330px-Standing_jaguar.jpg"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Los Tuxtlas, Veracruz",
+    "titulo": "Vuelan de nuevo las guacamayas rojas",
+    "texto": "Un proyecto de reintroducción devolvió el color de la guacamaya roja a una selva donde llevaba décadas ausente.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Scarlet_macaw_%28Ara_macao_cyanopterus%29_Copan.jpg/330px-Scarlet_macaw_%28Ara_macao_cyanopterus%29_Copan.jpg"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Volcanes del centro de México",
+    "titulo": "El teporingo, conejo de los volcanes, resiste",
+    "texto": "La conservación del zacatonal en el Ajusco e Iztaccíhuatl mantiene vivo a uno de los conejos más raros del planeta.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Romerolagus_diazi_-_Zoologico_de_Chapultepec%2C_Ciudad_de_M%C3%A9xico_-_Cropped2xAlt.png/330px-Romerolagus_diazi_-_Zoologico_de_Chapultepec%2C_Ciudad_de_M%C3%A9xico_-_Cropped2xAlt.png"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Tabasco",
+    "titulo": "Buenas señales para el manatí en el sureste",
+    "texto": "Nacimientos y avistamientos en los humedales de Tabasco alientan la recuperación de este gigante manso.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Manatee_with_calf.PD_-_colour_corrected.jpg/330px-Manatee_with_calf.PD_-_colour_corrected.jpg"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Norte de México",
+    "titulo": "Monitorean nuevos nidos del águila real",
+    "texto": "El símbolo del escudo nacional suma nidos vigilados, fruto de años de protección de su hábitat de pastizal.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg/330px-015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg"
+  }
+]

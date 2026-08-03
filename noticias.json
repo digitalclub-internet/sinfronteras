@@ -1,0 +1,66 @@
+[
+  {
+    "fecha": "dic 2025",
+    "lugar": "Janos, Chihuahua",
+    "titulo": "De 23 a casi 500 bisontes en 16 años",
+    "texto": "Donados en 2009 por el Wind Cave NP de EE. UU. al Rancho El Uno, hoy forman cuatro manadas. Una de las mayores restauraciones de Norteamérica.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/American_bison_k5680-1.jpg/500px-American_bison_k5680-1.jpg",
+    "badge": "new",
+    "tag": "Expediente",
+    "go": "historia"
+  },
+  {
+    "fecha": "mar 2026",
+    "lugar": "Cuatro Ciénegas, Coahuila",
+    "titulo": "El bisonte vuelve a Coahuila tras 200 años",
+    "texto": "44 ejemplares forman una nueva manada en una reserva privada de más de 3,700 hectáreas — la expansión del modelo de Janos.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/American_bison_k5680-1.jpg/500px-American_bison_k5680-1.jpg",
+    "badge": "hora",
+    "tag": "Última hora"
+  },
+  {
+    "fecha": "ago 2025",
+    "lugar": "Durango",
+    "titulo": "Nueva zona para reintroducir al lobo mexicano",
+    "texto": "La SEMARNAT presentó un nuevo territorio en Durango; se estiman entre 35 y 40 lobos ya en libertad en la Sierra de Chihuahua.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mexican_Wolf_2_yfb-edit_1.jpg/500px-Mexican_Wolf_2_yfb-edit_1.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "jun 2025",
+    "lugar": "Xochimilco, CDMX",
+    "titulo": "Los ajolotes criados en cautiverio sí sobreviven",
+    "texto": "La UNAM confirma: ejemplares liberados en los canales fueron recapturados con aumento de peso. Un giro para una especie al borde.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/500px-Axolotl_ganz.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Sierra de San Pedro Mártir, BC",
+    "titulo": "El cóndor de California vuelve a volar en México",
+    "texto": "Uno de los mayores rescates de la historia: de 'probablemente extinto' a surcar de nuevo los cielos de Baja California.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg/500px-California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "sep 2024",
+    "lugar": "Xochimilco, CDMX",
+    "titulo": "Abre Anemitilkalli, laboratorio para salvar al ajolote",
+    "texto": "Un centro comunitario que reproduce y reintroduce al anfibio más emblemático de México, junto con los chinamperos.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/500px-Axolotl_ganz.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Noroeste de México",
+    "titulo": "Se recupera el berrendo peninsular en el desierto",
+    "texto": "Gracias a los programas PACE, una de las subespecies más amenazadas del berrendo gana terreno otra vez.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Antilocapra_americana.jpg/500px-Antilocapra_americana.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  }
+]
