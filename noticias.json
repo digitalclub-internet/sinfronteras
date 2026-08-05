@@ -1,6 +1,15 @@
 [
   {
     "fecha": "2025",
+    "lugar": "Desierto de Sonora",
+    "titulo": "El borrego cimarrón recupera terreno",
+    "texto": "Los programas de manejo comunitario devolvieron al borrego cimarrón a sierras donde había desaparecido.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Desert_Bighorn_Barna_Cropped.jpg/330px-Desert_Bighorn_Barna_Cropped.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
     "lugar": "La Escobilla, Oaxaca",
     "titulo": "Arribada masiva de tortuga golfina",
     "texto": "Cientos de miles de tortugas golfinas desovaron en las playas protegidas de Oaxaca, uno de los santuarios más importantes del mundo.",
