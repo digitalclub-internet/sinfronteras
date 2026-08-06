@@ -1,20 +1,6 @@
 [
   {
     "fecha": "2025",
-    "lugar": "Coahuila y Nuevo León",
-    "titulo": "El oso negro regresa a las sierras del noreste",
-    "texto": "Tras décadas de retroceso, los avistamientos de oso negro se multiplican en el noreste de México.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/01_Schwarzb%C3%A4r.jpg/330px-01_Schwarzb%C3%A4r.jpg"
-  },
-  {
-    "fecha": "2024-2025",
-    "lugar": "Península de Yucatán",
-    "titulo": "El censo nacional del jaguar da buenas noticias",
-    "texto": "Los monitoreos confirman más jaguares de lo estimado en las selvas del sureste, señal de ecosistemas que se recuperan.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Standing_jaguar.jpg/330px-Standing_jaguar.jpg"
-  },
-  {
-    "fecha": "2025",
     "lugar": "Los Tuxtlas, Veracruz",
     "titulo": "Vuelan de nuevo las guacamayas rojas",
     "texto": "Un proyecto de reintroducción devolvió el color de la guacamaya roja a una selva donde llevaba décadas ausente.",

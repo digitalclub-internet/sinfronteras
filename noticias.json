@@ -1,6 +1,24 @@
 [
   {
     "fecha": "2025",
+    "lugar": "Coahuila y Nuevo León",
+    "titulo": "El oso negro regresa a las sierras del noreste",
+    "texto": "Tras décadas de retroceso, los avistamientos de oso negro se multiplican en el noreste de México.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/01_Schwarzb%C3%A4r.jpg/330px-01_Schwarzb%C3%A4r.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2024-2025",
+    "lugar": "Península de Yucatán",
+    "titulo": "El censo nacional del jaguar da buenas noticias",
+    "texto": "Los monitoreos confirman más jaguares de lo estimado en las selvas del sureste, señal de ecosistemas que se recuperan.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Standing_jaguar.jpg/330px-Standing_jaguar.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
     "lugar": "Desierto de Sonora",
     "titulo": "El borrego cimarrón recupera terreno",
     "texto": "Los programas de manejo comunitario devolvieron al borrego cimarrón a sierras donde había desaparecido.",
@@ -87,15 +105,6 @@
     "titulo": "Abre Anemitilkalli, laboratorio para salvar al ajolote",
     "texto": "Un centro comunitario que reproduce y reintroduce al anfibio más emblemático de México, junto con los chinamperos.",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/500px-Axolotl_ganz.jpg",
-    "badge": "new",
-    "tag": "Nuevo"
-  },
-  {
-    "fecha": "2025",
-    "lugar": "Noroeste de México",
-    "titulo": "Se recupera el berrendo peninsular en el desierto",
-    "texto": "Gracias a los programas PACE, una de las subespecies más amenazadas del berrendo gana terreno otra vez.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Antilocapra_americana.jpg/500px-Antilocapra_americana.jpg",
     "badge": "new",
     "tag": "Nuevo"
   }
