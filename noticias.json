@@ -1,6 +1,15 @@
 [
   {
     "fecha": "2025",
+    "lugar": "Los Tuxtlas, Veracruz",
+    "titulo": "Vuelan de nuevo las guacamayas rojas",
+    "texto": "Un proyecto de reintroducción devolvió el color de la guacamaya roja a una selva donde llevaba décadas ausente.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Scarlet_macaw_%28Ara_macao_cyanopterus%29_Copan.jpg/330px-Scarlet_macaw_%28Ara_macao_cyanopterus%29_Copan.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
     "lugar": "Coahuila y Nuevo León",
     "titulo": "El oso negro regresa a las sierras del noreste",
     "texto": "Tras décadas de retroceso, los avistamientos de oso negro se multiplican en el noreste de México.",
@@ -96,15 +105,6 @@
     "titulo": "El cóndor de California vuelve a volar en México",
     "texto": "Uno de los mayores rescates de la historia: de 'probablemente extinto' a surcar de nuevo los cielos de Baja California.",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg/500px-California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg",
-    "badge": "new",
-    "tag": "Nuevo"
-  },
-  {
-    "fecha": "sep 2024",
-    "lugar": "Xochimilco, CDMX",
-    "titulo": "Abre Anemitilkalli, laboratorio para salvar al ajolote",
-    "texto": "Un centro comunitario que reproduce y reintroduce al anfibio más emblemático de México, junto con los chinamperos.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/500px-Axolotl_ganz.jpg",
     "badge": "new",
     "tag": "Nuevo"
   }
