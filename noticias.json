@@ -1,6 +1,24 @@
 [
   {
     "fecha": "2025",
+    "lugar": "Volcanes del centro de México",
+    "titulo": "El teporingo, conejo de los volcanes, resiste",
+    "texto": "La conservación del zacatonal en el Ajusco e Iztaccíhuatl mantiene vivo a uno de los conejos más raros del planeta.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Romerolagus_diazi_-_Zoologico_de_Chapultepec%2C_Ciudad_de_M%C3%A9xico_-_Cropped2xAlt.png/330px-Romerolagus_diazi_-_Zoologico_de_Chapultepec%2C_Ciudad_de_M%C3%A9xico_-_Cropped2xAlt.png",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
+    "lugar": "Tabasco",
+    "titulo": "Buenas señales para el manatí en el sureste",
+    "texto": "Nacimientos y avistamientos en los humedales de Tabasco alientan la recuperación de este gigante manso.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Manatee_with_calf.PD_-_colour_corrected.jpg/330px-Manatee_with_calf.PD_-_colour_corrected.jpg",
+    "badge": "new",
+    "tag": "Nuevo"
+  },
+  {
+    "fecha": "2025",
     "lugar": "Los Tuxtlas, Veracruz",
     "titulo": "Vuelan de nuevo las guacamayas rojas",
     "texto": "Un proyecto de reintroducción devolvió el color de la guacamaya roja a una selva donde llevaba décadas ausente.",
@@ -87,24 +105,6 @@
     "titulo": "Nueva zona para reintroducir al lobo mexicano",
     "texto": "La SEMARNAT presentó un nuevo territorio en Durango; se estiman entre 35 y 40 lobos ya en libertad en la Sierra de Chihuahua.",
     "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mexican_Wolf_2_yfb-edit_1.jpg/500px-Mexican_Wolf_2_yfb-edit_1.jpg",
-    "badge": "new",
-    "tag": "Nuevo"
-  },
-  {
-    "fecha": "jun 2025",
-    "lugar": "Xochimilco, CDMX",
-    "titulo": "Los ajolotes criados en cautiverio sí sobreviven",
-    "texto": "La UNAM confirma: ejemplares liberados en los canales fueron recapturados con aumento de peso. Un giro para una especie al borde.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Axolotl_ganz.jpg/500px-Axolotl_ganz.jpg",
-    "badge": "new",
-    "tag": "Nuevo"
-  },
-  {
-    "fecha": "2025",
-    "lugar": "Sierra de San Pedro Mártir, BC",
-    "titulo": "El cóndor de California vuelve a volar en México",
-    "texto": "Uno de los mayores rescates de la historia: de 'probablemente extinto' a surcar de nuevo los cielos de Baja California.",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg/500px-California-condor-gymnogyps-californianus-078_%2821196759264%29.jpg",
     "badge": "new",
     "tag": "Nuevo"
   }
